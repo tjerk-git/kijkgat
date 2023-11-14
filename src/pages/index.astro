@@ -64,7 +64,10 @@ import Circle from "../components/Circle.astro";
 
 				try {
 					const stream = await navigator.mediaDevices.getUserMedia({
-						video: true,
+						audio: false,
+						video: {
+							facingMode: "environment",
+						},
 					});
 					const videoElement = document.getElementById("camera-view");
 
