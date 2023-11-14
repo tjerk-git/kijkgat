@@ -11,6 +11,7 @@ import Circle from "../components/Circle.astro";
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
+
 	<body>
 		<Header title={SITE_TITLE} />
 		<main>
@@ -34,6 +35,13 @@ import Circle from "../components/Circle.astro";
 					kijken en te zien.
 				</p>
 				<Circle />
+
+				<div class="try">
+					<button id="activateCamera">Ik durf wel wat</button>
+					<div id="camera-container">
+						<video id="camera-view" autoplay playsinline></video>
+					</div>
+				</div>
 			</section>
 
 			<section id="niet">
@@ -45,5 +53,30 @@ import Circle from "../components/Circle.astro";
 			</section>
 		</main>
 		<Footer />
+		<script>
+			// JavaScript to access the camera and stream it to the video element
+			async function initCamera() {
+				const button = document.getElementById("activateCamera");
+				const container = document.getElementById("camera-container");
+
+				button.style.display = "none";
+				container.style.display = "block";
+
+				try {
+					const stream = await navigator.mediaDevices.getUserMedia({
+						video: true,
+					});
+					const videoElement = document.getElementById("camera-view");
+
+					videoElement.srcObject = stream;
+				} catch (error) {
+					console.error("Error accessing the camera:", error);
+				}
+			}
+
+			document
+				.getElementById("activateCamera")
+				.addEventListener("click", initCamera);
+		</script>
 	</body>
 </html>

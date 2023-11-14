@@ -127,6 +127,42 @@ hr {
 }
 
 
+#camera-container {
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+	width: 300px; /* Adjust the size as needed */
+	height: 300px; /* Adjust the size as needed */
+	display:none;
+}
+
+#camera-view {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
+.try {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	transition: all 1s ease;
+	justify-content: center;
+	padding:1rem;
+}
+
+button{
+	cursor: pointer;
+	padding:1rem;
+	background:black;
+	color:white;
+	font-size:1rem;
+	transition: 0.3s;
+	border:none;
+	transition: 0.3s;
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;
