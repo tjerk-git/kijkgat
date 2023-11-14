@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Circle from "../components/Circle.astro";
 ---
 
 <!doctype html>
@@ -13,9 +14,35 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	<body>
 		<Header title={SITE_TITLE} />
 		<main>
-			<picture>
-				<img src="kijkgat.gif" alt="Description of the image" loading="eager" />
-			</picture>
+			<section id="kijkgat">
+				<picture>
+					<img
+						src="kijkgat.gif"
+						alt="Description of the image"
+						loading="eager"
+					/>
+				</picture>
+			</section>
+
+			<section id="ervaar">
+				<h2>Ervaar</h2>
+				<p>
+					Kijkgat helpt stil te staan bij kleine mooiigheden. Het leert je
+					focussen, verbeelden, een stap terug te nemen en de wereld te
+					waarderen voor wat het is. Het laat je verwonderen over details,
+					lijnen, patronen, sporen en kleuren. Kijkgat helpt om te zoeken, te
+					kijken en te zien.
+				</p>
+				<Circle />
+			</section>
+
+			<section id="niet">
+				<h2>Wat is het niet</h2>
+			</section>
+
+			<section id="contact">
+				<h2>Contact</h2>
+			</section>
 		</main>
 		<Footer />
 	</body>

@@ -41,6 +41,10 @@ body {
 	color: #242124;
 }
 
+section{
+	text-align:center;
+}
+
 main {
 	width: 1140px;
 	max-width: calc(100% - 2em);
