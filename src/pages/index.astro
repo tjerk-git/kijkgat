@@ -4,6 +4,9 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Circle from "../components/Circle.astro";
+import Canvas from "../components/Canvas.astro";
+import Dopper from "../components/Dopper.astro";
+import Bril from "../components/Bril.astro";
 ---
 
 <!doctype html>
@@ -44,8 +47,21 @@ import Circle from "../components/Circle.astro";
 				</div>
 			</section>
 
+			<section id="canvas_container">
+				<Canvas />
+			</section>
+
 			<section id="niet">
 				<h2>Wat is het niet</h2>
+
+				<div class="not_container">
+					<div>
+						<Dopper />
+					</div>
+					<div>
+						<Bril />
+					</div>
+				</div>
 			</section>
 
 			<section id="contact">

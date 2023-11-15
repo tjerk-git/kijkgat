@@ -1,0 +1,94 @@
+<canvas id="canvas"></canvas>
+
+<script>
+  var can = document.getElementById("canvas");
+  var ctx = can.getContext("2d");
+  var img;
+
+  function init() {
+    // Set canvas dimensions based on the window size
+    can.width = 500;
+    can.height = 500;
+
+    // Load the image after setting canvas dimensions
+    img = new Image();
+    img.onload = function () {
+      redraw({
+        x: -can.width,
+        y: -can.height,
+      });
+    };
+    img.src =
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/The_Night_Watch_-_HD.jpg/1920px-The_Night_Watch_-_HD.jpg";
+  }
+
+  init();
+
+  window.addEventListener("resize", function () {
+    init();
+  });
+
+  can.addEventListener(
+    "mousemove",
+    function (e) {
+      e.preventDefault(); // Prevent scrolling on touch devices
+      var mouse = getMouse(e, can);
+      redraw(mouse);
+    },
+    false,
+  );
+
+  can.addEventListener(
+    "touchmove",
+    function (e) {
+      e.preventDefault(); // Prevent scrolling on touch devices
+      var touch = e.touches[0];
+      var touchMouse = getMouse(touch, can);
+      redraw(touchMouse);
+    },
+    false,
+  );
+
+  function redraw(mouse) {
+    can.width = can.width;
+    ctx.drawImage(img, 0, 0, can.width, can.height);
+    ctx.beginPath();
+    ctx.rect(0, 0, can.width, can.height);
+    ctx.arc(mouse.x, mouse.y, 30, 0, Math.PI * 2, true);
+    ctx.clip();
+    ctx.fillStyle = "#FFF9E8";
+    ctx.fillRect(0, 0, can.width, can.height);
+  }
+
+  function getMouse(e, canvas) {
+    var element = canvas,
+      offsetX = 0,
+      offsetY = 0,
+      mx,
+      my;
+
+    if (element.offsetParent !== undefined) {
+      do {
+        offsetX += element.offsetLeft;
+        offsetY += element.offsetTop;
+      } while ((element = element.offsetParent));
+    }
+
+    mx = e.pageX - offsetX;
+    my = e.pageY - offsetY;
+
+    return {
+      x: mx,
+      y: my,
+    };
+  }
+</script>
+
+<style>
+  canvas {
+    display: block;
+    cursor: none;
+    width: 100%;
+    height: 100%;
+  }
+</style>
