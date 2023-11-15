@@ -1,6 +1,5 @@
 ---
 import People from "./People.astro";
-import Logo from "./Logo.astro";
 ---
 
 <div class="people_container">
@@ -10,7 +9,11 @@ import Logo from "./Logo.astro";
 </div>
 
 <footer>
-	<span>Kijkgat&copy;</span>
+	<span
+		>Kijkgat&copy; <a href="mailto:kijkgat@outlook.com">kijkgat@outlook.com</a>
+		 is ontwikkeld door Michelle van der Plaats en Allert Sjabbens. <br />
+		 Online gezet door <a href="https://potloodgum.com">Potloodgum</a></span
+	>
 </footer>
 <style>
 	footer {
@@ -31,6 +34,7 @@ import Logo from "./Logo.astro";
 
 	.people_container {
 		display: flex;
+		margin-top: 2rem;
 		justify-content: center;
 	}
 </style>
