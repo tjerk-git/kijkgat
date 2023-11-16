@@ -30,6 +30,7 @@ body {
 	line-height: 1.7;
 	background: #FFF9E8;
 	color: #242124;
+	overflow-x:hidden;
 }
 
 #kijkgat{
@@ -188,14 +189,16 @@ button{
 
 
 .marquee {
-width: 140%;
+	max-width:1140px;
+width: 100%;
 overflow: hidden;
 white-space: nowrap;
 animation: marquee 20s linear infinite;
 }
 
 .marquee-reverse {
-width: 140%;
+	max-width:1140px;
+width: 100%;
 overflow: hidden;
 white-space: nowrap;
 animation: marquee-reverse 20s linear infinite;
