@@ -22,15 +22,10 @@ import Museum from "../components/Museum.astro";
 		<Header title={SITE_TITLE} />
 
 		<main>
-			<section id="kijkgat">
-				<picture>
-					<img
-						src="kijkgat.gif"
-						alt="Description of the image"
-						loading="eager"
-					/>
-				</picture>
+			<section>
+				<h1>Kijkgat&copy;</h1>
 			</section>
+			<section id="kijkgat"></section>
 
 			<section id="ervaar">
 				<h2>Ervaar</h2>
@@ -91,13 +86,121 @@ import Museum from "../components/Museum.astro";
 			</section>
 			<Footer />
 			<script>
+				import * as THREE from "three";
+				import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
+				import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+				let camera, scene, renderer;
+				let object;
+
+				init();
+
+				function init() {
+					camera = new THREE.PerspectiveCamera(45, 800 / 500, 0.1, 20);
+					camera.position.z = 2.5;
+
+					// scene
+
+					scene = new THREE.Scene();
+
+					const ambientLight = new THREE.AmbientLight(0xffffff);
+					scene.add(ambientLight);
+
+					const pointLight = new THREE.PointLight(0xffffff, 15);
+					camera.add(pointLight);
+					scene.add(camera);
+
+					// manager
+
+					function loadModel() {
+						object.position.y = 0;
+						object.scale.setScalar(0.2);
+
+						scene.add(object);
+
+						animate(); // Start animation loop
+					}
+
+					const manager = new THREE.LoadingManager(loadModel);
+
+					function onProgress(xhr) {
+						if (xhr.lengthComputable) {
+							const percentComplete = (xhr.loaded / xhr.total) * 100;
+							console.log(
+								"model " + percentComplete.toFixed(2) + "% downloaded",
+							);
+						}
+					}
+
+					function onError() {}
+
+					const loader = new OBJLoader(manager);
+					loader.load(
+						"kijkgat.obj",
+						function (obj) {
+							object = obj;
+						},
+						onProgress,
+						onError,
+					);
+
+					//
+
+					renderer = new THREE.WebGLRenderer({ antialias: true });
+					renderer.setPixelRatio(window.devicePixelRatio);
+					renderer.setClearColor(new THREE.Color("#FFF9E8")); // Set background color
+					renderer.setSize(800, 500);
+
+					const kijkgat = document.getElementById("kijkgat");
+
+					if (kijkgat) {
+						kijkgat.appendChild(renderer.domElement);
+					}
+
+					//
+
+					const controls = new OrbitControls(camera, renderer.domElement);
+					controls.minDistance = 2;
+					controls.maxDistance = 5;
+					controls.enableZoom = false;
+					controls.addEventListener("change", render);
+
+					//
+
+					window.addEventListener("resize", onWindowResize);
+				}
+
+				function onWindowResize() {
+					camera.aspect = window.innerWidth / window.innerHeight;
+					camera.updateProjectionMatrix();
+
+					renderer.setSize(window.innerWidth, window.innerHeight);
+				}
+
+				function animate() {
+					requestAnimationFrame(animate);
+
+					// Add a small rotation to the object
+					if (object) {
+						object.rotation.y += 0.005;
+					}
+
+					render();
+				}
+
+				function render() {
+					renderer.render(scene, camera);
+				}
+
 				// JavaScript to access the camera and stream it to the video element
 				async function initCamera() {
 					const button = document.getElementById("activateCamera");
 					const container = document.getElementById("camera-container");
 
-					button.style.display = "none";
-					container.style.display = "block";
+					if (button && container) {
+						button.style.display = "none";
+						container.style.display = "block";
+					}
 
 					try {
 						const stream = await navigator.mediaDevices.getUserMedia({
@@ -107,16 +210,20 @@ import Museum from "../components/Museum.astro";
 							},
 						});
 						const videoElement = document.getElementById("camera-view");
-
-						videoElement.srcObject = stream;
+						if (!videoElement) {
+							console.error("Video element not found");
+						} else {
+							videoElement.srcObject = stream;
+						}
 					} catch (error) {
 						console.error("Error accessing the camera:", error);
 					}
 				}
+				let activateCameraButton = document.getElementById("activateCamera");
 
-				document
-					.getElementById("activateCamera")
-					.addEventListener("click", initCamera);
+				if (activateCameraButton) {
+					activateCameraButton.addEventListener("click", initCamera);
+				}
 			</script>
 		</main>
 	</body>
