@@ -4,6 +4,14 @@
     scroll-behavior: smooth;
 }
 
+*{
+	box-sizing: border-box;
+}
+
+html, body{
+	position:relative;
+	overflow-x:hidden;
+}
 
 @font-face {
 	font-family: 'Inter';
@@ -188,7 +196,6 @@ button{
 
 
 .marquee {
-	max-width:1140px;
 width: 100%;
 overflow: hidden;
 white-space: nowrap;
@@ -196,7 +203,6 @@ animation: marquee 20s linear infinite;
 }
 
 .marquee-reverse {
-	max-width:1140px;
 width: 100%;
 overflow: hidden;
 white-space: nowrap;
