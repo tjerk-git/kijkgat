@@ -186,3 +186,31 @@ button{
 	transition: 0.3s;
 }
 
+
+.marquee {
+width: 140%;
+overflow: hidden;
+white-space: nowrap;
+animation: marquee 20s linear infinite;
+}
+
+.marquee-reverse {
+width: 140%;
+overflow: hidden;
+white-space: nowrap;
+animation: marquee-reverse 20s linear infinite;
+}
+
+@keyframes marquee {
+	0%   { transform: translateX(100%); }
+	100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee-reverse {
+	0%   { transform: translateX(-100%); }
+	100% { transform: translateX(100%); }
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
