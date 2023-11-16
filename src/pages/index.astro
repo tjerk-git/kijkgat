@@ -96,7 +96,7 @@ import Museum from "../components/Museum.astro";
 				init();
 
 				function init() {
-					camera = new THREE.PerspectiveCamera(45, 800 / 500, 0.1, 20);
+					camera = new THREE.PerspectiveCamera(45, 350 / 610, 0.1, 20);
 					camera.position.z = 2.5;
 
 					// scene
@@ -149,7 +149,7 @@ import Museum from "../components/Museum.astro";
 					renderer = new THREE.WebGLRenderer({ antialias: true });
 					renderer.setPixelRatio(window.devicePixelRatio);
 					renderer.setClearColor(new THREE.Color("#FFF9E8")); // Set background color
-					renderer.setSize(800, 500);
+					renderer.setSize(350, 610);
 
 					const kijkgat = document.getElementById("kijkgat");
 
@@ -163,6 +163,7 @@ import Museum from "../components/Museum.astro";
 					controls.minDistance = 2;
 					controls.maxDistance = 5;
 					controls.enableZoom = false;
+					controls.enablePan = false;
 					controls.addEventListener("change", render);
 
 					//
