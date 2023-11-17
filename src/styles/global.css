@@ -1,9 +1,5 @@
 
 
-:global(html) {
-    scroll-behavior: smooth;
-}
-
 *{
 	box-sizing: border-box;
 }
@@ -11,7 +7,9 @@
 html, body{
 	position:relative;
 	overflow-x:hidden;
+	scroll-behavior: smooth;
 }
+
 
 @font-face {
 	font-family: 'Inter';
@@ -27,6 +25,7 @@ html, body{
 	font-style: normal;
 	font-display: swap;
 }
+
 body {
 	font-family: 'Inter', sans-serif;
 	margin: 0;
