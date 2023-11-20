@@ -10,11 +10,23 @@ import Bril from "../components/Bril.astro";
 import Oorbel from "../components/Oorbel.astro";
 import WC from "../components/WC.astro";
 import Museum from "../components/Museum.astro";
+import { SEO } from "astro-seo";
 ---
 
 <!doctype html>
 <html lang="nl">
 	<head>
+		<SEO
+			title="Kijkgat"
+			description="Een gat om door te kijken"
+			openGraph={{
+				basic: {
+					title: "Kijkgat",
+					type: "website",
+					image: "./kijkgatlogo.svg",
+				},
+			}}
+		/>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 
