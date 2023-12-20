@@ -32,6 +32,8 @@ import { SEO } from "astro-seo";
 		<style>
 			#canvas_container {
 				position: relative;
+				width: 100vw;
+				height: 80vh;
 			}
 		</style>
 	</head>
@@ -40,85 +42,15 @@ import { SEO } from "astro-seo";
 		<Header title={SITE_TITLE} />
 
 		<main>
-			<section>
-				<h1>Kijkgat &copy;</h1>
-			</section>
-			<section id="kijkgat"></section>
-			<section>
-				<div class="marquee">
-					<div>
-						-Kijkgat - Guckloch - Titthål - глазок - Trou à regarder - Ovisilmä
-						- Néző lyuk - Peephole - Mirilla - Kighul - Sjochgat - Gözetleme
-						deliği - Kíki -
-					</div>
-				</div>
-				<div class="marquee-reverse">
-					<div>
-						-Kijkgat - Guckloch - Titthål - глазок - Trou à regarder - Ovisilmä
-						- Néző lyuk - Peephole - Mirilla - Kighul - Sjochgat - Gözetleme
-						deliği - Kíki -
-					</div>
-				</div>
-			</section>
-
-			<section id="ervaar">
-				<h2>Ervaar</h2>
-				<p>
-					Kijkgat helpt stil te staan bij kleine mooiigheden. Het leert je
-					focussen, verbeelden, een stap terug te nemen en de wereld te
-					waarderen voor wat het is. Het laat je verwonderen over details,
-					lijnen, patronen, sporen en kleuren. Kijkgat helpt om te zoeken, te
-					kijken en te zien.
-				</p>
-				<Circle />
-			</section>
-
 			<section id="canvas_container">
 				<Canvas />
 			</section>
 
-			<section id="niet">
-				<h2>Wat is het niet:</h2>
-
-				<div class="not_container">
-					<div>
-						<h3>Een dopperlabel</h3>
-						<Dopper />
-					</div>
-					<div>
-						<h3>Een bril</h3>
-						<Bril />
-					</div>
-					<div>
-						<h3>Een wc-bril</h3>
-						<WC />
-					</div>
-					<div>
-						<h3>Een oorbel</h3>
-						<Oorbel />
-					</div>
-					<div>
-						<h3>Een museumjaarkaart</h3>
-						<Museum />
-					</div>
-				</div>
-
-				<section id="contact">
-					<h2>Contact</h2>
-					<div class="try">
-						<button id="activateCamera">Ik durf wel wat</button>
-						<div id="camera-container">
-							<h6 class="text-overlay">
-								Zien wij elkaar bij een workshop? <a
-									href="mailto:kijkgat@outlook.com">kijkgat@outlook.com</a
-								>
-							</h6>
-							<video id="camera-view" autoplay playsinline></video>
-						</div>
-					</div>
-				</section>
+			<section>
+				<h1>Kijkgat</h1>
 			</section>
-			<Footer />
+
+			<!-- 
 			<script>
 				import * as THREE from "three";
 				import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
@@ -262,8 +194,7 @@ import { SEO } from "astro-seo";
 
 				if (activateCameraButton) {
 					activateCameraButton.addEventListener("click", initCamera);
-				}
-			</script>
+				} -->
 		</main>
 	</body>
 </html>
