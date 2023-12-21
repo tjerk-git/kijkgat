@@ -74,7 +74,10 @@ section{
 	height:95vh;
 }
 
-.loop-container .item{
-	font-size: 3rem;
-	font-weight:700;
+.hero-section {
+  position: relative;
+  top: 50vh;
+  overflow: hidden;
+  font: 900 9vw/1 sans-serif;
+  min-height: 100vh;
 }
